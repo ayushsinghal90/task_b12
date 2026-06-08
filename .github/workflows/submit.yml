@@ -8,6 +8,8 @@ on:
 jobs:
   submit:
     runs-on: ubuntu-latest
+    environment: ${{ github.ref == 'refs/heads/main' && 'prod' }}
+
     steps:
       - uses: actions/checkout@v4
       - name: Run submission script
