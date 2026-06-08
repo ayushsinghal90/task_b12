@@ -1,0 +1,16 @@
+name: Submit Application
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  submit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run submission script
+        env:
+          SIGNING_SECRET: ${{ secrets.SIGNING_SECRET }}
+        run: python3 submit.py
